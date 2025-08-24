@@ -1,0 +1,45 @@
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.content-left img {
+  width: 100px;
+}
+
+.content-center ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 18px;
+  color: aliceblue;
+
+  list-style: none;
+}
+
+.content-center ul li {
+  cursor: pointer;
+}
+
+.content-center ul li:hover {
+  color: rgb(0, 0, 67);
+  transition: 0.5s;
+}
+
+.content-right button {
+  padding: 15px;
+  border-radius: 16px;
+  border: none;
+  background-color: rgb(0, 0, 67);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.content-right button:hover {
+  background-color: rgb(0, 0, 176);
+  transition: 0.5s;
+}
