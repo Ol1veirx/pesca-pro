@@ -1,22 +1,25 @@
 import "./Header.css";
 import pescaproLogo from '../../assets/pescapro-logo.png'
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <>
       <div className="content-header">
         <div className="content-left">
-          <img src={pescaproLogo}></img>
+          <NavLink to="/">
+            <img src={pescaproLogo}></img>
+          </NavLink>
         </div>
 
         <div className="content-center">
           <ul>
             <li>
-              <a>Torneios</a>
+              <NavLink to="/tournements" className="nav-link">Torneios</NavLink>
             </li>
 
             <li>
-              <a>Sobre Nós</a>
+              <NavLink to="/" className="nav-link">Sobre Nós</NavLink>
             </li>
           </ul>
         </div>

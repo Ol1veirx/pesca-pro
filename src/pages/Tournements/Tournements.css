@@ -1,0 +1,72 @@
+.tournaments-grid {
+   display: grid;
+   gap: 16px;
+   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+   padding: 16px;
+}
+
+.tournements-page {
+   --navy-900: #0b1b2a;
+   --navy-700: #123253;
+   --blue-500: #2563eb;
+   --blue-600: #1d4ed8;
+   --blue-50: #eef4ff;
+
+   background:
+      radial-gradient(1000px 500px at 50% -10%, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0) 60%),
+      linear-gradient(180deg, #0e2640 0%, #0b2036 45%, #091a2c 100%);
+}
+
+.header-container .nav-link {
+   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+   margin-bottom: 8px;
+
+   color: white;
+}
+
+.tournements-page .content-right button {
+   background: var(--blue-500);
+   color: #fff;
+   border: none;
+   border-radius: 10px;
+   padding: 8px 14px;
+   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+   cursor: pointer;
+}
+
+.tournements-page .content-right button:hover {
+   background: var(--blue-600);
+}
+
+.tournements-hero {
+   color: white;
+   background: rgba(37, 99, 235, 0.06);
+   border: 1px solid rgba(37, 99, 235, 0.12);
+   border-radius: 14px;
+   padding: 24px 16px;
+   text-align: center;
+   max-width: 1200px;
+   margin: 16px auto;
+}
+
+.tournements-hero h1 {
+   margin: 0;
+   font-size: 1.8rem;
+   letter-spacing: 0.4px;
+   color: white;
+}
+
+.tournements-hero p {
+   margin: 6px 0 0;
+   color: white;
+   font-size: 0.98rem;
+}
+
+.tournements-grid {
+   display: grid;
+   gap: 16px;
+   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+   padding: 16px;
+   max-width: 1200px;
+   margin: 0 auto 24px;
+}

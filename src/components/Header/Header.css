@@ -15,31 +15,41 @@
   justify-content: center;
   gap: 20px;
   font-size: 18px;
-  color: aliceblue;
 
   list-style: none;
 }
 
-.content-center ul li {
+.nav-link {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.nav-link {
   cursor: pointer;
 }
 
-.content-center ul li:hover {
+.nav-link:hover {
   color: rgb(0, 0, 67);
   transition: 0.5s;
 }
 
+.header-container .nav-link[aria-current="page"] {
+   color: var(--blue-600);
+   text-decoration: underline;
+   text-underline-offset: 4px;
+}
+
 .content-right button {
-  padding: 15px;
-  border-radius: 16px;
+  background: #2563eb;
+  color: #fff;
   border: none;
-  background-color: rgb(0, 0, 67);
-  color: white;
-  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 14px;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
   cursor: pointer;
 }
 
 .content-right button:hover {
-  background-color: rgb(0, 0, 176);
+  background-color: #1d4ed8;
   transition: 0.5s;
 }
