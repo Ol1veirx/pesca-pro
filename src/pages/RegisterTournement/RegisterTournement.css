@@ -1,0 +1,136 @@
+.create-tournament-page {
+  --navy-900: #0b1b2a;
+  --navy-700: #123253;
+  --blue-500: #2563eb;
+  --blue-600: #1d4ed8;
+  --blue-50: #eef4ff;
+
+  min-height: 100vh;
+  background:
+    radial-gradient(1000px 500px at 50% -10%, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0) 60%),
+    linear-gradient(180deg, #0e2640 0%, #0b2036 45%, #091a2c 100%);
+}
+
+.create-hero {
+  color: white;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  max-width: 800px;
+  margin: 16px auto;
+}
+
+.create-hero h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.4px;
+  color: white;
+}
+
+.create-hero p {
+  margin: 6px 0 0;
+  color: white;
+  font-size: 0.98rem;
+}
+
+.create-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.tournament-form {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.btn-submit {
+  background: var(--blue-500);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+  background: var(--blue-600);
+  transform: translateY(-1px);
+}
+
+.create-tournament-page .content-header .nav-link {
+  color: white;
+}
+
+.create-tournament-page .content-header .nav-link:hover {
+  color: #bde0fe;
+}
+
+.create-tournament-page .content-header .nav-link[aria-current="page"] {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tournament-form {
+    padding: 20px;
+  }
+}

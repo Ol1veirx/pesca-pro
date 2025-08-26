@@ -19,13 +19,15 @@ function Header() {
             </li>
 
             <li>
-              <NavLink to="/" className="nav-link">Sobre Nós</NavLink>
+              <NavLink to="/about-us" className="nav-link">Sobre Nós</NavLink>
             </li>
           </ul>
         </div>
 
         <div className="content-right">
-          <button>Cadastrar Torneio</button>
+          <NavLink to="/register-tournement">
+              <button>Cadastrar Torneio</button>
+          </NavLink>
         </div>
       </div>
     </>
