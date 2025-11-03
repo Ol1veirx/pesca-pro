@@ -15,6 +15,8 @@ function RegisterTournament() {
     contactPhone: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -24,22 +26,58 @@ function RegisterTournament() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Dados do torneio:", formData);
-    alert("Solicitação enviada! Entraremos em contato em breve.");
+    setIsLoading(true);
 
-    setFormData({
-      name: "",
-      date: "",
-      location: "",
-      description: "",
-      maxParticipants: "",
-      prize: "",
-      contactEmail: "",
-      contactPhone: "",
-    });
+    const apiData = {
+      nome_torneio: formData.name,
+      data_evento: formData.date,
+      maximo_participantes: parseInt(formData.maxParticipants) || 0,
+      local_evento: formData.location,
+      premiacao: formData.prize,
+      descricao_evento: formData.description,
+      email_contato: formData.contactEmail,
+      telefone: formData.contactPhone,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3022/api/torneios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(apiData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Torneio criado:", result);
+        alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+
+        setFormData({
+          name: "",
+          date: "",
+          location: "",
+          description: "",
+          maxParticipants: "",
+          prize: "",
+          contactEmail: "",
+          contactPhone: "",
+        });
+      } else {
+        const error = await response.json();
+        console.error("Erro ao criar torneio:", error);
+        alert("Erro ao enviar solicitação. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro de conexão:", error);
+      alert("Erro de conexão. Verifique se o servidor está funcionando.");
+    } finally {
+      setIsLoading(false);
+    }
   };
+
 
   return (
     <>
@@ -162,8 +200,8 @@ function RegisterTournament() {
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="btn-submit">
-                Enviar Solicitação
+              <button type="submit" className="btn-submit" disabled={isLoading}>
+                {isLoading ? "Enviando..." : "Enviar Solicitação"}
               </button>
             </div>
           </form>

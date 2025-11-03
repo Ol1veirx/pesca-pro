@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: pescapro_postgres
+    environment:
+      POSTGRES_DB: pescapro
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "6783:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - pescapro_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pescapro_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pescapro.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8043:80"
+    depends_on:
+      - postgres
+    networks:
+      - pescapro_network
+
+  app:
+    build: .
+    container_name: pescapro_backend
+    ports:
+      - "3022:3022"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://admin:admin123@postgres:5432/pescapro
+    networks:
+      - pescapro_network
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+
+networks:
+  pescapro_network:
+    driver: bridge

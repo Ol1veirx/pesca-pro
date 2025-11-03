@@ -48,3 +48,25 @@
    color: #475569;
    font-size: 0.95rem;
 }
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status.pendente {
+  background-color: #ffeaa7;
+  color: #e17055;
+}
+
+.status.aprovado {
+  background-color: #55efc4;
+  color: #00b894;
+}
+
+.status.rejeitado {
+  background-color: #fab1a0;
+  color: #e17055;
+}

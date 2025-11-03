@@ -5,9 +5,10 @@ type CardTournementProps = {
    title: string;
    date: string;
    location: string;
+   status: string;
 }
 
-function CardTournement({ imageUrl, title, date, location }: CardTournementProps) {
+function CardTournement({ imageUrl, title, date, location, status }: CardTournementProps) {
   return (
     <div className="card-container">
       <div className="card-top">
@@ -18,6 +19,7 @@ function CardTournement({ imageUrl, title, date, location }: CardTournementProps
          <h3>{title}</h3>
          <p>{date}</p>
          <p>{location}</p>
+         <p className={`status ${status}`}>{status}</p>
       </div>
     </div>
   );
