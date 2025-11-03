@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import CardTournement from "../../components/CardTournement/CardTournement";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import tournamentsMock from "../../mocks/TournementsMock";
 import "./Tournements.css";
 
 interface Torneio {
