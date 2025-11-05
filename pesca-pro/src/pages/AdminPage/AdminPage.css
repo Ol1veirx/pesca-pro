@@ -1,7 +1,19 @@
 .admin-page {
+  --navy-900: #0b1b2a;
+  --navy-700: #123253;
+  --blue-500: #2563eb;
+  --blue-600: #1d4ed8;
+  --blue-50: #eef4ff;
+
   min-height: 100vh;
-  background-color: #f8fafc;
   padding: 2rem;
+
+  background:
+    radial-gradient(1000px 500px at 50% -10%, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0) 60%),
+    linear-gradient(180deg, #0e2640 0%, #0b2036 45%, #091a2c 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 .admin-header {
@@ -153,7 +165,9 @@
   background: #4b5563;
 }
 
-.loading, .error, .no-data {
+.loading,
+.error,
+.no-data {
   text-align: center;
   padding: 3rem;
   color: #6b7280;
@@ -169,7 +183,44 @@
   cursor: pointer;
 }
 
-/* Responsivo */
+.description-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.description-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #6b7280;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 2px;
+  transition: all 0.2s;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expand-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.expand-btn:active {
+  transform: scale(0.95);
+}
+
 @media (max-width: 768px) {
   .admin-page {
     padding: 1rem;

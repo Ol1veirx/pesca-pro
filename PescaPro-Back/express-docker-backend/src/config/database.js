@@ -8,11 +8,9 @@ const waitForDatabase = async (maxRetries = 15, delay = 2000) => {
   for (let i = 0; i < maxRetries; i++) {
     try {
       const client = await pool.connect();
-      console.log('PostgreSQL conectado com sucesso!');
       client.release();
       return true;
     } catch (error) {
-      console.log(`Tentativa ${i + 1}/${maxRetries} - Aguardando PostgreSQL...`);
       if (i === maxRetries - 1) {
         throw new Error(`Falha ao conectar após ${maxRetries} tentativas: ${error.message}`);
       }
@@ -22,8 +20,6 @@ const waitForDatabase = async (maxRetries = 15, delay = 2000) => {
 };
 
 const createTorneiosTable = async () => {
-  console.log('Iniciando criação da tabela torneios...');
-
   const query = `
     CREATE TABLE IF NOT EXISTS torneios (
       id SERIAL PRIMARY KEY,
@@ -44,18 +40,13 @@ const createTorneiosTable = async () => {
   try {
     await waitForDatabase();
 
-    console.log('Executando query de criação da tabela...');
     await pool.query(query);
-    console.log('Tabela torneios criada com sucesso!');
 
-    console.log('Verificando se a tabela foi criada...');
     const checkTable = await pool.query(`
       SELECT table_name
       FROM information_schema.tables
       WHERE table_schema = 'public' AND table_name = 'torneios'
     `);
-
-    console.log('Tabelas encontradas:', checkTable.rows);
 
     if (checkTable.rows.length > 0) {
       console.log('Tabela torneios confirmada no banco!');
@@ -65,7 +56,6 @@ const createTorneiosTable = async () => {
 
   } catch (error) {
     console.error('Erro ao criar tabela torneios:', error.message);
-    console.error('Stack trace:', error.stack);
     throw error;
   }
 };

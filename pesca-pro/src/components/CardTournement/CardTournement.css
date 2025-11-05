@@ -1,7 +1,7 @@
 .card-container {
    width: 100%;
    max-width: 340px;
-   height: 360px;
+   height: auto;
    display: grid;
    grid-template-rows: 1fr 1fr;
    border: 1px solid #e5e7eb;
@@ -62,8 +62,8 @@
 }
 
 .status.aprovado {
-  background-color: #55efc4;
-  color: #00b894;
+  background-color: #71fa78;
+  color: #252525;
 }
 
 .status.rejeitado {

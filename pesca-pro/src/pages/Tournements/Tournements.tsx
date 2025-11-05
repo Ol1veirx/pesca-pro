@@ -85,6 +85,7 @@ function Tournements() {
               title={t.nome_torneio}
               date={formatDate(t.data_evento)}
               location={t.local_evento}
+              contact_mail={t.email_contato}
               status={t.status}
             />
           ))}

@@ -20,6 +20,7 @@ function AdminPage() {
   const [torneios, setTorneios] = useState<Torneio[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Set<number>>(new Set());
 
   const fetchTorneios = async () => {
     try {
@@ -97,6 +98,18 @@ function AdminPage() {
     return date.toLocaleDateString('pt-BR');
   };
 
+  const toggleDescription = (torneioId: number) => {
+    setExpandedDescriptions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(torneioId)) {
+        newSet.delete(torneioId);
+      } else {
+        newSet.add(torneioId);
+      }
+      return newSet;
+    });
+  };
+
   useEffect(() => {
     fetchTorneios();
   }, []);
@@ -146,7 +159,6 @@ function AdminPage() {
             <table className="admin-table">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Nome do Torneio</th>
                   <th>Data</th>
                   <th>Local</th>
@@ -159,11 +171,24 @@ function AdminPage() {
               <tbody>
                 {torneios.map((torneio) => (
                   <tr key={torneio.id}>
-                    <td>{torneio.id}</td>
                     <td className="tournament-name">
                       <strong>{torneio.nome_torneio}</strong>
                       {torneio.descricao_evento && (
-                        <small>{torneio.descricao_evento.substring(0, 50)}...</small>
+                        <div className="description-container">
+                          <small className="description-text">
+                            {expandedDescriptions.has(torneio.id)
+                              ? torneio.descricao_evento
+                              : `${torneio.descricao_evento.substring(0, 50)}...`
+                            }
+                          </small>
+                          <button
+                            className="expand-btn"
+                            onClick={() => toggleDescription(torneio.id)}
+                            title={expandedDescriptions.has(torneio.id) ? "Recolher" : "Expandir"}
+                          >
+                            {expandedDescriptions.has(torneio.id) ? "▲" : "▼"}
+                          </button>
+                        </div>
                       )}
                     </td>
                     <td>{formatDate(torneio.data_evento)}</td>

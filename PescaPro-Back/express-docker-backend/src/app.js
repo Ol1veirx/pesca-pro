@@ -19,14 +19,12 @@ app.get('/', (req, res) => {
 
 const startServer = async () => {
   try {
-    console.log('📋 Criando tabelas do banco...');
+    console.log('Criando tabelas do banco...');
     await createTorneiosTable();
-    console.log('✅ Banco configurado com sucesso!');
+    console.log('Banco configurado com sucesso!');
 
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Servidor rodando na porta ${PORT}`);
-      console.log(`Acesse: http://localhost:${PORT}`);
-      console.log(`API: http://localhost:${PORT}/api`);
     });
 
   } catch (error) {
