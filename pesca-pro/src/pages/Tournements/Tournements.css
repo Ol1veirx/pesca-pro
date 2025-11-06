@@ -67,3 +67,9 @@
    max-width: 1200px;
    margin: 0 auto 24px;
 }
+
+.no-tournement {
+   text-align: center;
+   padding: 3rem;
+   color: #6b7280;
+ }
